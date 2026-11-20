@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CartLab — checkout demo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/config.js"></script>
+</head>
+<body>
+  <div class="topbar">
+    <a class="logo" href="/"><span class="mark"><i data-lucide="shopping-bag"></i></span> Cart<span>Lab</span></a>
+    <span class="tag">CHECKOUT DEMO</span>
+    <div class="spacer"></div>
+    <div class="cart-pill"><i data-lucide="shopping-cart"></i> <b id="count">0</b> items</div>
+    <div class="avatar">CL</div>
+  </div>
+
+  <div class="banner">
+    <div><span class="eyebrow">A checkout full of arithmetic mistakes</span>
+      <h1>Build a cart. Break the total.</h1>
+      <p>Add items, apply a coupon and watch the numbers. Then report what looks wrong through the BugShield widget.</p></div>
+    <div class="banner-art">🛒</div>
+  </div>
+
+  <div class="steps">
+    <div class="step active"><span>1</span> Cart</div><div class="line"></div>
+    <div class="step"><span>2</span> Delivery</div><div class="line"></div>
+    <div class="step"><span>3</span> Payment</div>
+  </div>
+
+  <main>
+    <section>
+      <div class="section-head"><h2>Pick your items</h2><span class="sub">Office essentials</span></div>
+      <div class="products" id="products"></div>
+      <div class="notice"><i data-lucide="info"></i> Try adding the same item twice, then use coupon <code>SAVE10</code>.</div>
+    </section>
+
+    <aside class="summary">
+      <div class="sum-head"><h2>Order summary</h2><span class="badge" id="buildTag">local</span></div>
+      <div class="lines">
+        <div class="line"><span>Subtotal</span><b id="subtotal">$0.00</b></div>
+        <div class="line"><span>Shipping</span><b id="shipping">$0.00</b></div>
+        <div class="line"><span>Discount (SAVE10)</span><b class="disc" id="discount">-$0.00</b></div>
+        <div class="line"><span>Tax (8%)</span><b id="tax">$0.00</b></div>
+      </div>
+      <div class="total"><span>Total</span><b id="total">$0.00</b></div>
+      <div class="coupon">
+        <div class="input-wrap"><i data-lucide="ticket-percent"></i><input id="coupon" placeholder="Coupon code"></div>
+        <button id="apply">Apply</button>
+      </div>
+      <div id="couponMsg" class="cmsg"></div>
+      <button class="checkout" id="checkout"><span>Place order</span><i data-lucide="arrow-right"></i></button>
+      <p class="secure"><i data-lucide="shield-check"></i> Demo only — no payment is taken.</p>
+    </aside>
+  </main>
+
+  <script src="/app.js"></script>
+</body>
+</html>
