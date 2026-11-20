@@ -7,6 +7,6 @@ staticSites:
     staticPublishPath: .
     envVars:
       - key: BUGSHIELD_ENDPOINT
-        value: https://buildshield-re.onrender.com/sdk/bugshield.js
+        value: https://multiagentnew.onrender.com/sdk/bugshield.js
       - key: BUGSHIELD_KEY
         sync: false

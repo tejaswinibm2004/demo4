@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 const root = process.cwd();
-const endpoint = process.env.BUGSHIELD_ENDPOINT || 'https://buildshield-re.onrender.com/sdk/bugshield.js';
+const endpoint = process.env.BUGSHIELD_ENDPOINT || 'https://multiagentnew.onrender.com/sdk/bugshield.js';
 const key = process.env.BUGSHIELD_KEY || '';
 const commit = process.env.RENDER_GIT_COMMIT || 'local';
 fs.writeFileSync(path.join(root, 'config.js'),
