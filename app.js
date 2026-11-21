@@ -64,9 +64,18 @@ document.addEventListener('DOMContentLoaded', () => {
   };
   const build = window.BUGSHIELD_BUILD_INFO || {};
   document.getElementById('buildTag').textContent = build.commit || 'local';
-  if (window.BUGSHIELD_ENDPOINT && window.BUGSHIELD_KEY) {
-    const s = document.createElement('script');
-    s.src = window.BUGSHIELD_ENDPOINT; s.setAttribute('data-key', window.BUGSHIELD_KEY); s.async = true;
-    document.body.appendChild(s);
-  }
+  // Always render the widget. Fall back to the deployed dashboard when config.js
+  // still contains the local/placeholder value (otherwise HTTPS blocks the script).
+  const configuredEndpoint = window.BUGSHIELD_ENDPOINT || '';
+  const endpoint = (!configuredEndpoint || /localhost|127\.0\.0\.1|REPLACE/i.test(configuredEndpoint))
+    ? (['localhost', '127.0.0.1'].includes(location.hostname)
+        ? 'http://localhost:10000/sdk/bugshield.js'
+        : 'https://multiagentnew.onrender.com/sdk/bugshield.js')
+    : configuredEndpoint;
+  const widgetKey = /REPLACE/i.test(window.BUGSHIELD_KEY || '') ? '' : (window.BUGSHIELD_KEY || '');
+  const s = document.createElement('script');
+  s.src = endpoint;
+  if (widgetKey) s.setAttribute('data-key', widgetKey);
+  s.async = true;
+  document.body.appendChild(s);
 });
